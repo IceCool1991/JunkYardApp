@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_header1"
+        android:title="Busqueda">
+        <menu>
+            <item
+                android:id="@+id/menu_seccion_1"
+                android:icon="@android:drawable/ic_menu_gallery"
+                android:title="Buscar piezas"/>
+            <item
+                android:id="@+id/menu_seccion_2"
+                android:icon="@android:drawable/ic_menu_agenda"
+                android:title="Buscar vehiculos para despiece"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/navigation_header2"
+        android:title="Otros">
+        <menu>
+            <item
+                android:id="@+id/menu_opcion_1"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:title="Bajas de vehiculos"/>
+            <item
+                android:id="@+id/menu_opcion_2"
+                android:icon="@android:drawable/ic_menu_camera"
+                android:title="Desguaces segun provincia"/>
+        </menu>
+    </item>
+</menu>

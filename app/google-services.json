@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "852687938682",
+    "firebase_url": "https://junkyardapp.firebaseio.com",
+    "project_id": "junkyardapp",
+    "storage_bucket": "junkyardapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852687938682:android:b5ee9a33cf31585b",
+        "android_client_info": {
+          "package_name": "org.ieselcaminas.pmdm.junkyardapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852687938682-teahi41id6on23lo09bkj4t9co8n7oc3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.ieselcaminas.pmdm.junkyardapp",
+            "certificate_hash": "7a094cba0c2195361428cc475c437d6b71526a54"
+          }
+        },
+        {
+          "client_id": "852687938682-c6evnivnp41dbar9sbu3d5odnpfbc40o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGXyFBFElNr6VTtsr7uTKHy4ZFvBXHuSQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852687938682-c6evnivnp41dbar9sbu3d5odnpfbc40o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
