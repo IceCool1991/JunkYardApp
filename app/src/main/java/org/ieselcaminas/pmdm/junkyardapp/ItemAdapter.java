@@ -11,15 +11,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ImagViewHolder> implements View.OnClickListener {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ImagViewHolder> implements View.OnClickListener {
 
-    private static ArrayList<Card> items;
+    private static ArrayList<Item> items;
     private View.OnClickListener listener;
     private Context context;
 
     private String[] spinnerMenu = new String[]{"", "Renombrar", "", "Copiar", "", "Cortar", "", "Eliminar", "", "Mover", ""};
 
-    public CardAdapter(Context context, ArrayList<Card> items) {
+    public ItemAdapter(Context context, ArrayList<Item> items) {
         this.items = items;
         this.context = context;
     }
@@ -37,7 +37,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ImagViewHolder
             spinner = (Spinner) itemView.findViewById(R.id.spinner);
         }
 
-        public void bindTitular(Card i) {
+        public void bindTitular(Item i) {
             imagen.setImageResource(i.getImagen());
             texto.setText(i.getNombre());
             ArrayAdapter<String> adaptador = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, spinnerMenu);
@@ -55,7 +55,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ImagViewHolder
 
     @Override
     public void onBindViewHolder(ImagViewHolder viewHolder, int pos) {
-        Card item = items.get(pos);
+        Item item = items.get(pos);
         viewHolder.bindTitular(item);
     }
 

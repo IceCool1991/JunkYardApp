@@ -1,11 +1,11 @@
 package org.ieselcaminas.pmdm.junkyardapp;
 
-public class Card {
+public class Item {
 
     String nombre;
     int image;
 
-    public Card(String nombre, int image) {
+    public Item(String nombre, int image) {
         super();
         this.nombre = nombre;
         this.image = image;

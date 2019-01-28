@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_header1"
         android:title="Busqueda">
         <menu>
             <item
                 android:id="@+id/menu_seccion_1"
-                android:icon="@android:drawable/ic_menu_gallery"
-                android:title="Buscar piezas"/>
+                android:icon="@drawable/buscarvehiculos"
+                android:title="Buscar piezas" />
             <item
                 android:id="@+id/menu_seccion_2"
-                android:icon="@android:drawable/ic_menu_agenda"
-                android:title="Buscar vehiculos para despiece"/>
+                android:icon="@drawable/iconocoche"
+                android:title="Buscar vehiculos para despiece" />
         </menu>
     </item>
     <item
@@ -20,11 +21,11 @@
         <menu>
             <item
                 android:id="@+id/menu_opcion_1"
-                android:icon="@android:drawable/ic_menu_manage"
-                android:title="Bajas de vehiculos"/>
+                android:icon="@drawable/buscarpiezas"
+                android:title="Bajas de vehiculos" />
             <item
                 android:id="@+id/menu_opcion_2"
-                android:icon="@android:drawable/ic_menu_camera"
+                android:icon="@android:drawable/ic_menu_mylocation"
                 android:title="Desguaces segun provincia"/>
         </menu>
     </item>
