@@ -17,8 +17,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ImagViewHolder
     private View.OnClickListener listener;
     private Context context;
 
-    private String[] spinnerMenu = new String[]{"", "Renombrar", "", "Copiar", "", "Cortar", "", "Eliminar", "", "Mover", ""};
-
     public ItemAdapter(Context context, ArrayList<Item> items) {
         this.items = items;
         this.context = context;
@@ -26,28 +24,36 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ImagViewHolder
 
     public class ImagViewHolder extends RecyclerView.ViewHolder {
         private ImageView imagen;
-        private TextView texto;
-        private Spinner spinner;
+        private TextView partName;
+        private TextView partRef;
+        private TextView partVehicle;
+        private TextView partPrice;
+        private TextView partJunkyard;
 
         public ImagViewHolder(View itemView) {
             super(itemView);
 
-            imagen = (ImageView) itemView.findViewById(R.id.imageView);
-            texto = (TextView) itemView.findViewById(R.id.cardName);
-            spinner = (Spinner) itemView.findViewById(R.id.spinner);
+            imagen = (ImageView) itemView.findViewById(R.id.partImage);
+            partName = (TextView) itemView.findViewById(R.id.partName);
+            partRef = (TextView) itemView.findViewById(R.id.partRef);
+            partVehicle = (TextView) itemView.findViewById(R.id.partVehicle);
+            partPrice = (TextView) itemView.findViewById(R.id.partPrice);
+            partJunkyard = (TextView) itemView.findViewById(R.id.junkYard);
         }
 
         public void bindTitular(Item i) {
-            imagen.setImageResource(i.getImagen());
-            texto.setText(i.getNombre());
-            ArrayAdapter<String> adaptador = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, spinnerMenu);
-            spinner.setAdapter(adaptador);
+            imagen.setImageResource(i.getImage());
+            partName.setText(i.getNombre());
+            partRef.setText(i.getRef());
+            partVehicle.setText(i.getVehiculo());
+            partPrice.setText(i.getPrecio());
+            partJunkyard.setText(i.getDesguace());
         }
     }
 
     @Override
     public ImagViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_item, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.part_item, viewGroup, false);
         itemView.setOnClickListener(this);
         ImagViewHolder ivh = new ImagViewHolder(itemView);
         return ivh;
@@ -74,4 +80,3 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ImagViewHolder
             listener.onClick(view);
     }
 }
-

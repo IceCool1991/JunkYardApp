@@ -12,7 +12,7 @@
             <item
                 android:id="@+id/menu_seccion_2"
                 android:icon="@drawable/iconocoche"
-                android:title="Buscar vehiculos para despiece" />
+                android:title="@string/despiece" />
         </menu>
     </item>
     <item

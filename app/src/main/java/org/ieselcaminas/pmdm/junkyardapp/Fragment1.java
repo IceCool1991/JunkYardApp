@@ -23,17 +23,11 @@ public class Fragment1 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         View thisView = inflater.inflate(R.layout.fragment1, container, false);
 
         final ArrayList<Item> items = new ArrayList<Item>();
-        items.add(new Item("Item 1", R.drawable.whale));
-        items.add(new Item("Item 2", R.drawable.whale2));
-        items.add(new Item("Item 3", R.drawable.whale3));
-        items.add(new Item("Item 4", R.drawable.whale4));
-        items.add(new Item("Item 5", R.drawable.whale5));
-        items.add(new Item("Item 6", R.drawable.whale6));
-        items.add(new Item("Item 7", R.drawable.whale7));
-        items.add(new Item("Item 8", R.drawable.whale8));
+        items.add(new Item("Cigueñal","1456892","Tododesguace.com","240€","Ford C-Max", R.drawable.whale));
 
         recView = thisView.findViewById(R.id.recyclerView);
 
@@ -42,7 +36,7 @@ public class Fragment1 extends Fragment {
 
         final ItemAdapter adaptador = new ItemAdapter(getContext(), items);
         recView.setAdapter(adaptador);
-        recView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        recView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recView.setItemAnimator(new DefaultItemAnimator());
 
         return thisView;
