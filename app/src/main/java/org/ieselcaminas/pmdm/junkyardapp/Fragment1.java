@@ -15,9 +15,7 @@ public class Fragment1 extends Fragment {
 
     RecyclerView recView;
 
-    public Fragment1()
-    {
-
+    public Fragment1(){
     }
 
     @Override
