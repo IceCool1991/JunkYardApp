@@ -32,7 +32,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ImagViewHolder
 
         public ImagViewHolder(View itemView) {
             super(itemView);
-
             imagen = (ImageView) itemView.findViewById(R.id.partImage);
             partName = (TextView) itemView.findViewById(R.id.partName);
             partRef = (TextView) itemView.findViewById(R.id.partRef);

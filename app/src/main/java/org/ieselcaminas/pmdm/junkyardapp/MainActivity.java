@@ -70,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new Fragment3();
                         fragmentTransaction = true;
                         break;
-                    case R.id.menu_opcion_2:
-                        fragment = new Fragment4();
-                        fragmentTransaction = true;
-                        break;
                 }
                 if (fragmentTransaction) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();

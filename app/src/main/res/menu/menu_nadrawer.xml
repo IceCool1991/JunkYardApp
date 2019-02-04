@@ -23,10 +23,6 @@
                 android:id="@+id/menu_opcion_1"
                 android:icon="@drawable/buscarpiezas"
                 android:title="Bajas de vehiculos" />
-            <item
-                android:id="@+id/menu_opcion_2"
-                android:icon="@android:drawable/ic_menu_mylocation"
-                android:title="Desguaces segun provincia"/>
         </menu>
     </item>
 </menu>
