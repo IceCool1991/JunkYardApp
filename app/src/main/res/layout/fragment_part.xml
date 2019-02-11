@@ -11,6 +11,7 @@
 
     <ImageView
         android:id="@+id/partLogo"
+        android:transitionName="ImageTransition"
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:layout_marginStart="8dp"
@@ -27,6 +28,7 @@
 
     <TextView
         android:id="@+id/partNameText"
+        android:transitionName="NameTransition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -45,6 +47,7 @@
 
     <TextView
         android:id="@+id/partRefText"
+        android:transitionName="RefTransition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -63,6 +66,7 @@
 
     <TextView
         android:id="@+id/partVehicleText"
+        android:transitionName="VehicleTransition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -81,6 +85,7 @@
 
     <TextView
         android:id="@+id/partPriceText"
+        android:transitionName="PriceTransition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -99,6 +104,7 @@
 
     <TextView
         android:id="@+id/partJunkyardText"
+        android:transitionName="JunkyardTransition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

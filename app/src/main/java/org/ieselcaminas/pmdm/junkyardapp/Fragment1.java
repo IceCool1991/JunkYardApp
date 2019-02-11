@@ -48,19 +48,12 @@ public class Fragment1 extends Fragment {
             @Override
             public void onClick(View v) {
                 PartFragment fragment2 = new PartFragment();
-                Transition slide = TransitionInflater.from(getActivity()).inflateTransition(R.transition.slide);
-                Transition fade = TransitionInflater.from(getActivity()).inflateTransition(R.transition.fade);
+                Transition slide = TransitionInflater.from(getActivity()).inflateTransition(R.transition.fade);
+                Transition fade = TransitionInflater.from(getActivity()).inflateTransition(R.transition.change_bounds);
 
                 fragment2.setSharedElementEnterTransition(slide);
                 fragment2.setSharedElementReturnTransition(fade);
 
-                ImageView idlogo = thisView.findViewById(R.id.partImage);
-
-                /*TextView partName =  thisView.findViewById(R.id.partName);
-                TextView partRef =  thisView.findViewById(R.id.partRef);
-                TextView partVehicle =  thisView.findViewById(R.id.partVehicle);
-                TextView partPrice =  thisView.findViewById(R.id.partPrice);
-                TextView partJunkyard =  thisView.findViewById(R.id.junkYard);*/
 
                 Item t = items.get(recView.getChildAdapterPosition(v));
                 Bundle bundle = new Bundle();
@@ -75,7 +68,12 @@ public class Fragment1 extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.content_frame, fragment2)
                         .addToBackStack(null)
-                        .addSharedElement(idlogo, idlogo.getTransitionName())
+                        .addSharedElement(thisView.findViewById(R.id.partImage), thisView.findViewById(R.id.partImage).getTransitionName())
+                        .addSharedElement(thisView.findViewById(R.id.partName), thisView.findViewById(R.id.partName).getTransitionName())
+                        .addSharedElement(thisView.findViewById(R.id.partVehicle), thisView.findViewById(R.id.partVehicle).getTransitionName())
+                        .addSharedElement(thisView.findViewById(R.id.partPrice), thisView.findViewById(R.id.partPrice).getTransitionName())
+                        .addSharedElement(thisView.findViewById(R.id.partRef), thisView.findViewById(R.id.partRef).getTransitionName())
+                        .addSharedElement(thisView.findViewById(R.id.junkYard), thisView.findViewById(R.id.junkYard).getTransitionName())
                         .commit();
             }
         });

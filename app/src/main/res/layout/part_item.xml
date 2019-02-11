@@ -22,12 +22,14 @@
             android:layout_height="86dp"
             android:contentDescription="@string/cardName"
             android:scaleType="centerCrop"
+            android:transitionName="ImageTransition"
             app:srcCompat="@drawable/whale" />
 
         <TextView
             android:id="@+id/partName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:transitionName="NameTransition"
             android:layout_marginLeft="120dp"
             android:text="Pieza"
             android:textSize="24sp"
@@ -64,6 +66,7 @@
 
         <TextView
             android:id="@+id/partRef"
+            android:transitionName="RefTransition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="215dp"
@@ -73,6 +76,7 @@
 
         <TextView
             android:id="@+id/partVehicle"
+            android:transitionName="VehicleTransition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="200dp"
@@ -82,6 +86,7 @@
 
         <TextView
             android:id="@+id/partPrice"
+            android:transitionName="PriceTransition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="180dp"
@@ -91,6 +96,7 @@
 
         <TextView
             android:id="@+id/junkYard"
+            android:transitionName="JunkyardTransition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
