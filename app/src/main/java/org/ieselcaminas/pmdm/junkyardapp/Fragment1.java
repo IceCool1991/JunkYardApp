@@ -79,7 +79,7 @@ public class Fragment1 extends Fragment {
         });
 
         recView.setAdapter(adaptador);
-        recView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        recView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recView.setItemAnimator(new DefaultItemAnimator());
 
         return thisView;

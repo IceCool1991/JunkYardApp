@@ -2,6 +2,7 @@ package org.ieselcaminas.pmdm.junkyardapp;
 
 public class User {
 
+
     String nombre;
     String apellido;
     String desguace;

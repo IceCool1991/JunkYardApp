@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.ieselcaminas.pmdm.junkyardapp.R;
 
@@ -39,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference users = database.getReference("users");
+        final DatabaseReference items = database.getReference("items");
+        final DatabaseReference cars = database.getReference("cars");
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         navView = findViewById(R.id.navview);
@@ -50,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new WelcomeFragment()).commit();
 
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -87,11 +95,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override public boolean onCreateOptionsMenu(Menu menu) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.toolbar_main, menu);
         this.menu = menu;
         return true;
+
     }
 
     @Override
@@ -102,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if(user == null) {
+        if (user == null) {
             if (id == R.id.action_login) {
                 List<AuthUI.IdpConfig> providers = Arrays.asList(
                         new AuthUI.IdpConfig.EmailBuilder().build(),
@@ -117,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                         RC_SIGN_IN);
                 return true;
             }
-        }else {
+        } else {
             AuthUI.getInstance()
                     .signOut(this)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {

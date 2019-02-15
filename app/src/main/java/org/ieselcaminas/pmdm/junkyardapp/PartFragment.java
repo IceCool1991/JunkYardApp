@@ -23,8 +23,8 @@ public class PartFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_part, container, false);
+
         ImageView img = view.findViewById(R.id.partLogo);
         TextView partName = view.findViewById(R.id.partNameText);
         TextView partRef = view.findViewById(R.id.partRefText);
@@ -38,7 +38,7 @@ public class PartFragment extends Fragment {
         partVehicle.setText(getArguments().getString("Vehicle"));
         partPrice.setText(getArguments().getString("Price"));
         partJunkyard.setText(getArguments().getString("Junkyard"));
-        return view;
 
+        return view;
     }
 }
