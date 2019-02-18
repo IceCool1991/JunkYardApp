@@ -54,7 +54,6 @@ public class Fragment1 extends Fragment {
                 fragment2.setSharedElementEnterTransition(slide);
                 fragment2.setSharedElementReturnTransition(fade);
 
-
                 Item t = items.get(recView.getChildAdapterPosition(v));
                 Bundle bundle = new Bundle();
                 bundle.putInt("Logo", t.getImage());
