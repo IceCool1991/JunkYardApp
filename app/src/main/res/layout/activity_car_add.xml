@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".CarAdd">
 
+    <com.oswaldogh89.picker.ImagePicker
+        android:id="@+id/picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="566dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.oswaldogh89.picker.ImagePicker>
+
 </android.support.constraint.ConstraintLayout>

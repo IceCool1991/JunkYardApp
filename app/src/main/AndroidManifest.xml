@@ -25,7 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CarAdd" />
-        <activity android:name=".PartAdd"></activity>
+        <activity android:name=".PartAdd" />
+        <activity android:name=".Profile"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package org.ieselcaminas.pmdm.junkyardapp;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -81,6 +85,14 @@ public class Fragment1 extends Fragment {
         recView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recView.setItemAnimator(new DefaultItemAnimator());
 
+        FloatingActionButton fab = thisView.findViewById(R.id.addPart);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(FirebaseAuth.getInstance().getCurrentUser() != null)
+                startActivity(new Intent(getContext(), PartAdd.class));
+            }
+        });
         return thisView;
     }
 }

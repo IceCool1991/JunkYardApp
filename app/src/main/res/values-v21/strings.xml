@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_login">Login</string>
+    <string name="price">Price</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="name">Name</string>
+    <string name="upload">Upload</string>
 </resources>

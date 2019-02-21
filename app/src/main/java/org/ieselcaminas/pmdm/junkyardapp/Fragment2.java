@@ -1,5 +1,7 @@
 package org.ieselcaminas.pmdm.junkyardapp;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -73,7 +75,13 @@ public class Fragment2 extends Fragment {
         recView.setAdapter(adaptador);
         recView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recView.setItemAnimator(new DefaultItemAnimator());
-
+        FloatingActionButton fab = thisView.findViewById(R.id.addCar);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), CarAdd.class));
+            }
+        });
         return thisView;
     }
 }

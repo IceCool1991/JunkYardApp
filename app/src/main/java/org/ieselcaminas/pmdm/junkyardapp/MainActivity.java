@@ -125,17 +125,21 @@ public class MainActivity extends AppCompatActivity {
                                 .setAvailableProviders(providers)
                                 .build(),
                         RC_SIGN_IN);
-                return true;
             }
         } else {
-            AuthUI.getInstance()
-                    .signOut(this)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        public void onComplete(@NonNull Task<Void> task) {
-                            item.setTitle("Log In");
-                            user = null;
-                        }
-                    });
+            if (id == R.id.action_profile) {
+                startActivity(new Intent(getApplicationContext(), Profile.class));
+            }
+            if (id == R.id.action_login) {
+                AuthUI.getInstance()
+                        .signOut(this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            public void onComplete(@NonNull Task<Void> task) {
+                                item.setTitle("Log In");
+                                user = null;
+                            }
+                        });
+            }
         }
         return super.onOptionsItemSelected(item);
     }
