@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "852687938682-g610c201ut4t1cn4icac813s1e6vlphg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.ieselcaminas.pmdm.junkyardapp",
+            "certificate_hash": "b0caefbed1a73b648a507fd268612886f3612e97"
+          }
+        },
+        {
           "client_id": "852687938682-c6evnivnp41dbar9sbu3d5odnpfbc40o.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -1,12 +1,20 @@
 package org.ieselcaminas.pmdm.junkyardapp;
+
+
 import android.content.Context;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ImagViewHolder> implements View.OnClickListener {
@@ -24,28 +32,29 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ImagViewHolder> 
         private ImageView imagen;
         private TextView carBrand;
         private TextView carModel;
-        private TextView carVin;
-        private TextView carYear;
-        private TextView carJunkyard;
 
         public ImagViewHolder(View itemView) {
             super(itemView);
-
             imagen = itemView.findViewById(R.id.carImage);
             carBrand = itemView.findViewById(R.id.carBrand);
             carModel = itemView.findViewById(R.id.carModel);
-            carVin = itemView.findViewById(R.id.carVin);
-            carYear = itemView.findViewById(R.id.carYear);
-            carJunkyard = itemView.findViewById(R.id.junkYard);
         }
 
         public void bindTitular(Car i) {
-            imagen.setImageResource(i.getImage());
-            carBrand.setText(i.getMarca());
-            carModel.setText(i.getModelo());
-            carVin.setText(i.getVin());
-            carYear.setText(i.getAño());
-            carJunkyard.setText(i.getDesguace());
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference("/images/cars/"+ i.getVin() +"/image");
+            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(context).load(uri).into(imagen);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+                }
+            });
+            carBrand.setText(i.getMake());
+            carModel.setText(i.getModel());
         }
     }
 

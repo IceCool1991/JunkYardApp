@@ -2,52 +2,52 @@ package org.ieselcaminas.pmdm.junkyardapp;
 
 public class Car {
 
-    String marca;
-    String modelo;
-    String desguace;
-    String año;
+    String make;
+    String model;
+    String engine;
+    String year;
     String vin;
-    int image;
+    String ownerId;
 
-    public Car(String marca, String modelo, String desguace, String año, String vin, int image) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.desguace = desguace;
-        this.año = año;
+    public Car(String make, String model, String engine, String year, String vin, String ownerId) {
+        this.make = make;
+        this.model = model;
+        this.engine = engine;
+        this.year = year;
         this.vin = vin;
-        this.image = image;
+        this.ownerId = ownerId;
     }
 
-    public String getMarca() {
-        return marca;
+    public String getMake() {
+        return make;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
+    public void setMake(String make) {
+        this.make = make;
     }
 
-    public String getModelo() {
-        return modelo;
+    public String getModel() {
+        return model;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public String getDesguace() {
-        return desguace;
+    public String getEngine() {
+        return engine;
     }
 
-    public void setDesguace(String desguace) {
-        this.desguace = desguace;
+    public void setEngine(String engine) {
+        this.engine = engine;
     }
 
-    public String getAño() {
-        return año;
+    public String getYear() {
+        return year;
     }
 
-    public void setAño(String precio) {
-        this.año = precio;
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public String getVin() {
@@ -58,11 +58,11 @@ public class Car {
         this.vin = vin;
     }
 
-    public int getImage() {
-        return image;
+    public String getOwnerId() {
+        return ownerId;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 }

@@ -22,8 +22,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.ieselcaminas.pmdm.junkyardapp.R;
 
@@ -36,15 +39,13 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navView;
     FirebaseUser user;
     Menu menu;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference users = database.getReference("users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference users = database.getReference("users");
-        final DatabaseReference items = database.getReference("items");
-        final DatabaseReference cars = database.getReference("cars");
 
         final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         navView = findViewById(R.id.navview);
@@ -156,6 +157,24 @@ public class MainActivity extends AppCompatActivity {
                 user = FirebaseAuth.getInstance().getCurrentUser();
                 MenuItem menuItem = menu.findItem(R.id.action_login);
                 menuItem.setTitle("Log out");
+                users.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (!snapshot.hasChild(user.getUid())) {
+                            users.child(user.getUid()).child("name").setValue(user.getDisplayName());
+                            if(user.getPhoneNumber() != null) {
+                                users.child(user.getUid()).child("phone").setValue(user.getPhoneNumber());
+                            }else{
+                                users.child(user.getUid()).child("phone").setValue("Not provided");
+                            }
+                            users.child(user.getUid()).child("email").setValue(user.getEmail());
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
                 // ...
             } else {
                 // Sign in failed. If response is null the user canceled the

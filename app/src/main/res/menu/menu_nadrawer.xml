@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_header1"
-        android:title="Busqueda">
+        android:title="Search">
         <menu>
             <item
                 android:id="@+id/menu_seccion_1"
                 android:icon="@drawable/buscarvehiculos"
-                android:title="Buscar piezas" />
+                android:title="Parts search" />
             <item
                 android:id="@+id/menu_seccion_2"
                 android:icon="@drawable/iconocoche"
@@ -17,12 +17,12 @@
     </item>
     <item
         android:id="@+id/navigation_header2"
-        android:title="Otros">
+        android:title="Others">
         <menu>
             <item
                 android:id="@+id/menu_opcion_1"
                 android:icon="@drawable/buscarpiezas"
-                android:title="Bajas de vehiculos" />
+                android:title="Deregister a car" />
         </menu>
     </item>
 </menu>

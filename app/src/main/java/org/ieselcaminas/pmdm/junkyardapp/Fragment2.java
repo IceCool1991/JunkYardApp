@@ -1,6 +1,9 @@
 package org.ieselcaminas.pmdm.junkyardapp;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,6 +15,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.SearchView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.ieselcaminas.pmdm.junkyardapp.R;
 
@@ -27,11 +41,50 @@ public class Fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         final View thisView = inflater.inflate(R.layout.fragment2, container, false);
 
+        final SearchView searchView = thisView.findViewById(R.id.carSearchView);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference cars = database.getReference("cars");
+
         final ArrayList<Car> items = new ArrayList<>();
-        items.add(new Car("Ford","Focus 1.6 TDCI","Tododesguace.com","2013","WF0FXXWPDFX", R.drawable.whale2));
+
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cars.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        items.add(new Car(dataSnapshot.child("make").getValue(String.class),
+                                dataSnapshot.child("model").getValue(String.class),
+                                dataSnapshot.child("engine").getValue(String.class),
+                                dataSnapshot.child("year").getValue(String.class),
+                                dataSnapshot.getKey(),
+                                dataSnapshot.child("ownerId").getValue(String.class)));
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
 
         recView = thisView.findViewById(R.id.recyclerViewCars);
 
@@ -39,39 +92,7 @@ public class Fragment2 extends Fragment {
 
         final CarAdapter adaptador = new CarAdapter(getContext(), items);
 
-        adaptador.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CarFragment fragment2 = new CarFragment();
-                Transition slide = TransitionInflater.from(getActivity()).inflateTransition(R.transition.fade);
-                Transition fade = TransitionInflater.from(getActivity()).inflateTransition(R.transition.change_bounds);
 
-                fragment2.setSharedElementEnterTransition(slide);
-                fragment2.setSharedElementReturnTransition(fade);
-
-
-                Car t = items.get(recView.getChildAdapterPosition(v));
-                Bundle bundle = new Bundle();
-                bundle.putInt("Logo", t.getImage());
-                /*bundle.putString("Name", t.getNombre());
-                bundle.putString("Ref", t.getRef());
-                bundle.putString("Vehicle", t.getVehiculo());
-                bundle.putString("Price", t.getPrecio());*/
-                bundle.putString("Junkyard", t.getDesguace());
-
-                fragment2.setArguments(bundle);
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, fragment2)
-                        .addToBackStack(null)
-                        .addSharedElement(thisView.findViewById(R.id.partImage), thisView.findViewById(R.id.partImage).getTransitionName())
-                        .addSharedElement(thisView.findViewById(R.id.partName), thisView.findViewById(R.id.partName).getTransitionName())
-                        .addSharedElement(thisView.findViewById(R.id.partVehicle), thisView.findViewById(R.id.partVehicle).getTransitionName())
-                        .addSharedElement(thisView.findViewById(R.id.partPrice), thisView.findViewById(R.id.partPrice).getTransitionName())
-                        .addSharedElement(thisView.findViewById(R.id.partRef), thisView.findViewById(R.id.partRef).getTransitionName())
-                        .addSharedElement(thisView.findViewById(R.id.junkYard), thisView.findViewById(R.id.junkYard).getTransitionName())
-                        .commit();
-            }
-        });
         recView.setAdapter(adaptador);
         recView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recView.setItemAnimator(new DefaultItemAnimator());

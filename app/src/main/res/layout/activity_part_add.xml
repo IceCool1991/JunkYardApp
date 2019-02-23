@@ -6,37 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".PartAdd">
 
-    <com.oswaldogh89.picker.ImagePicker
-        android:id="@+id/partImgPicker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="566dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </com.oswaldogh89.picker.ImagePicker>
 
     <EditText
         android:id="@+id/partNameAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/partImageView" />
 
     <EditText
         android:id="@+id/partRefAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/ref"
         android:inputType="textPersonName"
@@ -47,8 +35,8 @@
         android:id="@+id/partVehAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/vehicle"
         android:inputType="textPersonName"
@@ -59,8 +47,8 @@
         android:id="@+id/partPriceAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="@string/price"
         android:inputType="numberDecimal"
@@ -78,6 +66,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/partPriceAdd" />
+
+    <ImageView
+        android:id="@+id/partImageView"
+        android:layout_width="213dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/camera_flat" />
 
 
 </android.support.constraint.ConstraintLayout>

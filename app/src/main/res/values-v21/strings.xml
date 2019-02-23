@@ -5,4 +5,12 @@
     <string name="vehicle">Vehicle</string>
     <string name="name">Name</string>
     <string name="upload">Upload</string>
+    <string name="brand">Make</string>
+    <string name="model">Model</string>
+    <string name="vin">VIN</string>
+    <string name="year">Year</string>
+    <string name="engine">Engine</string>
+    <string name="owner">Owner</string>
+    <string name="deregister">Car deregistering</string>
+    <string name="addcomm">Additional comments</string>
 </resources>

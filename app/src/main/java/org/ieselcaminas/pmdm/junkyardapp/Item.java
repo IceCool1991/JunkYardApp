@@ -4,18 +4,18 @@ public class Item {
 
     String nombre;
     String ref;
-    String desguace;
+    String ownerId;
     String precio;
     String vehiculo;
-    int image;
+    String itemId;
 
-    public Item(String nombre, String ref, String desguace, String precio, String vehiculo, int image) {
+    public Item(String nombre, String ref, String ownerId, String precio, String vehiculo, String itemId) {
         this.nombre = nombre;
         this.ref = ref;
-        this.desguace = desguace;
+        this.ownerId = ownerId;
         this.precio = precio;
         this.vehiculo = vehiculo;
-        this.image = image;
+        this.itemId = itemId;
     }
 
     public String getNombre() {
@@ -34,12 +34,12 @@ public class Item {
         this.ref = ref;
     }
 
-    public String getDesguace() {
-        return desguace;
+    public String getOwnerId() {
+        return ownerId;
     }
 
-    public void setDesguace(String desguace) {
-        this.desguace = desguace;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getPrecio() {
@@ -58,11 +58,11 @@ public class Item {
         this.vehiculo = vehiculo;
     }
 
-    public int getImage() {
-        return image;
+    public String getItemId() {
+        return itemId;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 }

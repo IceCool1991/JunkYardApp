@@ -1,5 +1,11 @@
 package org.ieselcaminas.pmdm.junkyardapp;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -26,27 +38,32 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ImagViewHolder
         private ImageView imagen;
         private TextView partName;
         private TextView partRef;
-        private TextView partVehicle;
         private TextView partPrice;
-        private TextView partJunkyard;
 
         public ImagViewHolder(View itemView) {
             super(itemView);
             imagen = (ImageView) itemView.findViewById(R.id.partImage);
             partName = (TextView) itemView.findViewById(R.id.partName);
             partRef = (TextView) itemView.findViewById(R.id.partRef);
-            partVehicle = (TextView) itemView.findViewById(R.id.partVehicle);
             partPrice = (TextView) itemView.findViewById(R.id.partPrice);
-            partJunkyard = (TextView) itemView.findViewById(R.id.junkYard);
         }
 
         public void bindTitular(Item i) {
-            imagen.setImageResource(i.getImage());
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference("/images/parts/"+ i.getItemId() +"/image");
+            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(context).load(uri).into(imagen);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+                }
+            });
             partName.setText(i.getNombre());
             partRef.setText(i.getRef());
-            partVehicle.setText(i.getVehiculo());
-            partPrice.setText(i.getPrecio());
-            partJunkyard.setText(i.getDesguace());
+            partPrice.setText(i.getPrecio()+"€");
         }
     }
 
